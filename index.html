@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+    <meta charset="UTF-8">
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    >
+
+    <title>Արմ Կերպ — Խաղա ընկերներիդ հետ | 1.0</title>
+    <meta name="description" content="Արմ Կերպ՝ հայկական բառախաղ ընկերների և թիմերի համար։ Տեղային խաղ, Online Multiplayer, ընկերներ և Voice Chat։">
+    <meta name="theme-color" content="#0b1020">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="upgrade.css">
+    <link rel="stylesheet" href="phase4.css">
+<link rel="stylesheet" href="phase5.css">
+<link rel="stylesheet" href="phase6.css">
+    <link rel="stylesheet" href="phase7.css">
+<link rel="stylesheet" href="phase8.css">
+    <link rel="stylesheet" href="phase9.css">
+    <link rel="stylesheet" href="phase10.css">
+    <link rel="stylesheet" href="phase11.css">
+<link rel="stylesheet" href="phase12.css">
+<link rel="stylesheet" href="phase13.css">
+<link rel="stylesheet" href="phase15.css">
+<link rel="stylesheet" href="phase16.css">
+<link rel="stylesheet" href="phase17.css">
+    <link rel="stylesheet" href="phase20.css">
+</head>
+
+<body>
+
+<div class="bg-gradient"></div>
+
+<!-- =========================
+     AUTH
+========================= -->
+
+<section id="auth-screen" class="screen active">
+
+    <div class="auth-card">
+
+        <div class="auth-logo">
+            🎭
+        </div>
+
+        <h1>Արմ Կերպ</h1>
+        <p class="auth-subtitle">Pro Ultimate</p>
+
+        <!-- LOGIN -->
+
+        <div id="login-box">
+
+            <h2>Մուտք</h2>
+
+            <form id="login-form" class="auth-form">
+
+                <input
+                        id="login-username"
+                        type="text"
+                        placeholder="Username"
+                        autocomplete="username"
+                >
+
+                <input
+                        id="login-password"
+                        type="password"
+                        placeholder="Password"
+                        autocomplete="current-password"
+                >
+
+                <button
+                        type="submit"
+                        class="primary-btn full-btn"
+                >
+                    Մուտք գործել
+                </button>
+
+            </form>
+
+            <div class="auth-switch">
+                Չունե՞ս հաշիվ։
+                <button
+                        type="button"
+                        onclick="showRegisterForm()"
+                >
+                    Գրանցվել
+                </button>
+            </div>
+
+            <button
+                    type="button"
+                    class="guest-btn"
+                    onclick="continueAsGuest()"
+            >
+                👤 Շարունակել որպես Guest
+            </button>
+
+        </div>
+
+
+        <!-- REGISTER -->
+
+        <div id="register-box" style="display:none">
+
+            <h2>Գրանցվել</h2>
+
+            <form id="register-form" class="auth-form">
+
+                <input
+                        id="register-username"
+                        type="text"
+                        placeholder="Username"
+                        autocomplete="username"
+                >
+
+                <input
+                        id="register-password"
+                        type="password"
+                        placeholder="Password"
+                        autocomplete="new-password"
+                >
+
+                <input
+                        id="register-password-confirm"
+                        type="password"
+                        placeholder="Կրկնել password-ը"
+                        autocomplete="new-password"
+                >
+
+                <button
+                        type="submit"
+                        class="primary-btn full-btn"
+                >
+                    Գրանցվել
+                </button>
+
+            </form>
+
+            <div class="auth-switch">
+                Արդեն ունե՞ս հաշիվ։
+                <button
+                        type="button"
+                        onclick="showLoginForm()"
+                >
+                    Մուտք
+                </button>
+            </div>
+
+            <button
+                    type="button"
+                    class="guest-btn"
+                    onclick="continueAsGuest()"
+            >
+                👤 Շարունակել որպես Guest
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     APP
+========================= -->
+
+<div id="app-container">
+
+    <!-- TOPBAR -->
+
+    <header class="topbar">
+
+        <div class="brand">
+            <span class="brand-icon">🎭</span>
+
+            <div>
+                <strong>Արմ Կերպ</strong>
+                <small>Pro Ultimate</small>
+            </div>
+        </div>
+
+        <div class="top-actions">
+
+            <button
+                    id="theme-btn"
+                    class="icon-btn theme-btn"
+                    type="button"
+                    onclick="toggleTheme()"
+            >
+                <span id="theme-icon">🌙</span>
+                <span id="theme-name">Dark</span>
+            </button>
+
+            <button
+                    id="sound-btn"
+                    class="icon-btn square-btn"
+                    type="button"
+                    onclick="toggleSound()"
+            >
+                🔊
+            </button>
+
+            <button
+                    id="profile-btn"
+                    class="profile-btn"
+                    type="button"
+                    onclick="openProfile()"
+            >
+                <span id="profile-avatar-button">😀</span>
+                <span id="logged-user">Guest</span>
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <!-- =========================
+             SETUP
+        ========================= -->
+
+        <section id="setup-screen" class="screen">
+
+            <div class="setup-card glass-card">
+
+                <div class="section-title">
+                    <span>🎮</span>
+
+                    <div>
+                        <h2>Սկսենք խաղը</h2>
+                        <p>Կարգավորիր խաղը</p>
+                    </div>
+                </div>
+
+
+                <div class="p20-intro">
+                    <span class="p20-version">✦ ARM ԿԵՐՊ 1.0</span>
+                    <h3>Ի՞նչ ենք խաղում այսօր։</h3>
+                    <p>Ընտրիր բաժինը։ Սովորական խաղի համար ընտրիր «Խաղ», իսկ ընկերների հետ առցանց խաղալու համար՝ «Online»։</p>
+                </div>
+                <div class="p20-tabs" role="tablist" aria-label="Խաղի բաժիններ">
+                    <button class="p20-tab is-active" type="button" id="p20-tab-local" role="tab" aria-controls="p20-local" aria-selected="true" data-p20-tab="local"><span aria-hidden="true">🎮</span> Խաղ</button>
+                    <button class="p20-tab" type="button" id="p20-tab-online" role="tab" aria-controls="p20-online" aria-selected="false" data-p20-tab="online" tabindex="-1"><span aria-hidden="true">🌐</span> Online</button>
+                    <button class="p20-tab" type="button" id="p20-tab-friends" role="tab" aria-controls="p20-friends" aria-selected="false" data-p20-tab="friends" tabindex="-1"><span aria-hidden="true">👥</span> Ընկերներ</button>
+                    <button class="p20-tab" type="button" id="p20-tab-rewards" role="tab" aria-controls="p20-rewards" aria-selected="false" data-p20-tab="rewards" tabindex="-1"><span aria-hidden="true">🏅</span> Պարգևներ</button>
+                </div>
+                <div class="p20-panel" id="p20-online" role="tabpanel" aria-labelledby="p20-tab-online" hidden>
+                    <div class="p20-panel-heading"><h3>🌐 Խաղա առցանց</h3><p>Մուտք գործիր Online հաշվով, ստեղծիր սենյակ և փոխանցիր կոդը ընկերներիդ։ Հետո Live Multiplayer-ում սկսիր խաղը։</p></div>
+                    <section id="phase9-setup" class="p9-panel" aria-label="Online մրցումներ"></section>
+                    <section id="phase10-setup" class="p10-panel" aria-label="Live multiplayer"></section>
+                </div>
+                <div class="p20-panel" id="p20-friends" role="tabpanel" aria-labelledby="p20-tab-friends" hidden>
+                    <div class="p20-panel-heading"><h3>👥 Ընկերներ և հրավերներ</h3><p>Ավելացրու ընկերներին username-ով։ Սենյակ հրավիրելուց առաջ բացիր «Online» բաժինը և ստեղծիր սենյակ։</p><button class="p20-inline-link" type="button" data-p20-open="online">🌐 Բացել Online բաժինը →</button></div>
+                    <section id="phase17-setup" class="p17-panel" aria-label="Ընկերներ և հրավերներ"></section>
+                </div>
+                <div class="p20-panel" id="p20-rewards" role="tabpanel" aria-labelledby="p20-tab-rewards" hidden>
+                    <div class="p20-panel-heading"><h3>🏅 Առաջադրանքներ և Challenge</h3><p>Ամեն օր հավաքիր XP, հետևիր առաջընթացիդ և համեմատիր ընկերներիդ արդյունքները։</p></div>
+                    <section id="phase7-setup" class="p7-panel" aria-label="Ամենօրյա առաջադրանքներ"></section>
+                    <section id="phase8-setup" class="p8-panel" aria-label="Ընկերների challenge"></section>
+                </div>
+                <div class="p20-panel is-active" id="p20-local" role="tabpanel" aria-labelledby="p20-tab-local">
+                    <div class="p20-panel-heading"><h3>🎮 Սովորական խաղ</h3><p>1. Գրիր թիմերի անունները։ 2. Ընտրիր կատեգորիան ու ժամանակը։ 3. Սեղմիր «Սկսել խաղը»։</p></div>
+                <!-- TEAMS -->
+
+                <div class="setup-section">
+
+                    <div class="section-heading">
+                        👥 Թիմեր
+                    </div>
+
+                    <div
+                            id="teams-container"
+                            class="teams-container"
+                    >
+
+                        <div class="team-input-row">
+
+                            <div class="team-number">1</div>
+
+                            <select class="team-avatar-input">
+                                <option>😀</option>
+                                <option>😎</option>
+                                <option>🤩</option>
+                                <option>🥳</option>
+                                <option>😇</option>
+                                <option>🤓</option>
+                                <option>😈</option>
+                                <option>🤠</option>
+                                <option>🥶</option>
+                                <option>🥰</option>
+                                <option>🤗</option>
+                                <option>😜</option>
+                                <option>🦊</option>
+                                <option>🐼</option>
+                                <option>🐸</option>
+                                <option>🐯</option>
+                            </select>
+
+                            <input
+                                    class="team-name-input"
+                                    type="text"
+                                    placeholder="Թիմ 1"
+                                    maxlength="25"
+                            >
+
+                        </div>
+
+
+                        <div class="team-input-row">
+
+                            <div class="team-number">2</div>
+
+                            <select class="team-avatar-input">
+                                <option>😎</option>
+                                <option>😀</option>
+                                <option>🤩</option>
+                                <option>🥳</option>
+                                <option>😇</option>
+                                <option>🤓</option>
+                                <option>😈</option>
+                                <option>🤠</option>
+                                <option>🥶</option>
+                                <option>🥰</option>
+                                <option>🤗</option>
+                                <option>😜</option>
+                                <option>🦊</option>
+                                <option>🐼</option>
+                                <option>🐸</option>
+                                <option>🐯</option>
+                            </select>
+
+                            <input
+                                    class="team-name-input"
+                                    type="text"
+                                    placeholder="Թիմ 2"
+                                    maxlength="25"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                            type="button"
+                            class="secondary-btn full-btn"
+                            onclick="addTeamInput()"
+                    >
+                        ＋ Ավելացնել թիմ
+                    </button>
+
+                </div>
+
+
+                <!-- GAME SETTINGS -->
+
+                <div class="setup-section">
+
+                    <div class="section-heading">
+                        ⚙️ Խաղի կարգավորումներ
+                    </div>
+
+                    <label>
+                        Բառերի կատեգորիա
+
+                        <select id="category-select">
+
+                            <option value="general">
+                                Ընդհանուր
+                            </option>
+
+                            <option value="football">
+                                ⚽ Ֆուտբոլ
+                            </option>
+
+                            <option value="daily">
+                                🏠 Առօրյա
+                            </option>
+
+                            <option value="movies">
+                                🎬 Ֆիլմեր
+                            </option>
+
+                            <option value="world">
+                                🌍 Աշխարհ
+                            </option>
+
+                            <option value="food">
+                                🍕 Սնունդ
+                            </option>
+
+                            <option value="tech">
+                                💻 Տեխնոլոգիա
+                            </option>
+
+                            <option value="all">
+                                🎲 Բոլորը
+                            </option>
+
+                        </select>
+                    </label>
+
+
+                    <div class="settings-grid">
+
+                        <label>
+                            ⏱️ Ժամանակ
+
+                            <select id="time-input">
+
+                                <option value="30">30 վրկ</option>
+                                <option value="45">45 վրկ</option>
+                                <option value="60">60 վրկ</option>
+                                <option value="90">90 վրկ</option>
+
+                            </select>
+
+                        </label>
+
+
+                        <label>
+                            🔄 Ռաունդներ
+
+                            <select id="rounds-input">
+
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+
+                            </select>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CUSTOM WORDS -->
+
+                <div class="setup-section">
+
+                    <button
+                            type="button"
+                            class="custom-toggle"
+                            onclick="toggleCustomSection()"
+                    >
+                        ✏️ Իմ բառերը
+                    </button>
+
+                    <div
+                            id="custom-word-section"
+                            style="display:none"
+                    >
+
+                        <div class="custom-input-row">
+
+                            <input
+                                    id="single-custom-word"
+                                    type="text"
+                                    placeholder="Գրիր բառ..."
+                                    maxlength="40"
+                            >
+
+                            <button
+                                    type="button"
+                                    onclick="addSingleCustomWord()"
+                                    class="add-word-btn"
+                            >
+                                ＋
+                            </button>
+
+                        </div>
+
+                        <div id="added-words-chips"></div>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                        type="button"
+                        class="primary-btn start-btn"
+                        onclick="startGame()"
+                >
+                    🚀 Սկսել խաղը
+                </button>
+                </div><!-- /p20-local -->
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             READY
+        ========================= -->
+
+        <section id="ready-screen" class="screen">
+
+            <div class="ready-card glass-card">
+
+                <div
+                        id="ready-avatar"
+                        class="ready-avatar"
+                >
+                    😀
+                </div>
+
+                <div class="ready-label">
+                    Հերթը
+                </div>
+
+                <h2 id="ready-team-name">
+                    Թիմ 1
+                </h2>
+
+                <p id="ready-round-info">
+                    Ռաունդ 1 / 1
+                </p>
+
+                <button
+                        type="button"
+                        class="primary-btn ready-start-btn"
+                        onclick="startTurn()"
+                >
+                    Սկսել հերթը
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             COUNTDOWN
+        ========================= -->
+
+        <div
+                id="countdown-overlay"
+                class="countdown-overlay"
+                style="display:none"
+        >
+
+            <div class="countdown-box">
+
+                <div id="countdown-team">
+                    Թիմ 1
+                </div>
+
+                <div id="countdown-number">
+                    3
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             GAME
+        ========================= -->
+
+        <section id="game-screen" class="screen">
+
+            <div class="game-card glass-card">
+
+                <div class="game-top">
+
+                    <div class="game-team">
+
+                        <div
+                                id="game-team-avatar"
+                                class="game-avatar"
+                        >
+                            😀
+                        </div>
+
+                        <div>
+
+                            <strong id="game-team-name">
+                                Թիմ 1
+                            </strong>
+
+                            <small id="game-round">
+                                Ռաունդ 1 / 1
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="game-stats">
+
+                        <div
+                                id="game-timer"
+                                class="timer"
+                        >
+                            30
+                        </div>
+
+                        <div
+                                id="game-score-count"
+                                class="score-counter"
+                        >
+                            0
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                        id="combo-box"
+                        class="combo-box"
+                >
+                    🔥 Combo x0
+                </div>
+
+
+                <div class="game-progress" aria-live="polite">
+                    <div class="game-progress-heading">
+                        <span>🎯 Գուշակված բառեր</span>
+                        <strong id="game-progress-label">0 / 7</strong>
+                    </div>
+                    <div class="game-progress-track" role="progressbar" aria-label="Գուշակված բառերի առաջընթաց" aria-valuemin="0" aria-valuemax="7" aria-valuenow="0" id="game-progress">
+                        <span id="game-progress-fill"></span>
+                    </div>
+                </div>
+
+                <div class="game-instruction">
+                    Սեղմիր բառի վրա, երբ այն գուշակված է։
+                </div>
+
+
+                <div
+                        id="words-container"
+                        class="words-container"
+                ></div>
+
+
+                <div
+                        id="points-popup"
+                        class="points-popup"
+                >
+                    +1
+                </div>
+
+
+                <div
+                        id="achievement-popup"
+                        class="achievement-popup"
+                >
+
+                    <strong id="achievement-title"></strong>
+                    <span id="achievement-text"></span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             TURN RESULT
+        ========================= -->
+
+        <section id="turn-result-screen" class="screen">
+
+            <div class="result-card glass-card">
+
+                <div class="result-icon">
+                    ⏱️
+                </div>
+
+                <h2>Հերթն ավարտվեց</h2>
+
+                <p id="turn-summary-text">
+                    Թիմի հերթն ավարտվեց։
+                </p>
+
+                <div class="result-stats">
+
+                    <div>
+                        <span id="turn-points">Միավորներ՝ 0</span>
+                    </div>
+
+                    <div>
+                        <span id="turn-best-combo">
+                            Լավագույն combo՝ x0
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <div
+                        id="turn-achievements"
+                        class="achievements"
+                ></div>
+
+
+                <div
+                        id="turn-scoreboard"
+                        class="scoreboard"
+                ></div>
+
+
+                <button
+                        type="button"
+                        class="primary-btn full-btn"
+                        onclick="nextTurnOrFinish()"
+                >
+                    Հաջորդ թիմ →
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             WINNER
+        ========================= -->
+
+        <section id="winner-screen" class="screen">
+
+            <div class="winner-card glass-card">
+
+                <div class="winner-trophy">
+                    🏆
+                </div>
+
+                <div class="winner-label">
+                    Հաղթող
+                </div>
+
+                <h1 id="winner-name">
+                    Թիմ 1
+                </h1>
+
+                <p id="winner-subtitle">
+                    0 միավոր
+                </p>
+
+                <div
+                        id="winner-achievement"
+                        class="winner-achievement"
+                >
+                    🏆 Լավագույն combo՝ x0
+                </div>
+
+
+                <div
+                        id="final-scoreboard"
+                        class="scoreboard"
+                ></div>
+
+
+                <div id="phase5-summary" aria-live="polite"></div>
+                <section id="phase7-winner" class="p7-panel" aria-label="Ամենօրյա պարգևներ"></section>
+
+                <section id="phase8-winner" class="p8-panel" aria-label="Ընկերների challenge"></section>
+                <section id="phase9-winner" class="p9-panel" aria-label="Online արդյունքներ"></section>
+
+                <div class="winner-actions">
+
+                    <button
+                            type="button"
+                            class="primary-btn full-btn"
+                            onclick="resetGame()"
+                    >
+                        🔄 Նոր խաղ
+                    </button>
+
+                    <button
+                            type="button"
+                            class="secondary-btn full-btn"
+                            onclick="openProfile(); showProfileHistory();"
+                    >
+                        📜 Պատմություն
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         PROFILE
+    ========================= -->
+
+    <div
+            id="profile-panel"
+            class="profile-panel"
+            style="display:none"
+    >
+
+        <div class="profile-card">
+
+            <button
+                    type="button"
+                    class="modal-close"
+                    onclick="closeProfile()"
+            >
+                ×
+            </button>
+
+            <div
+                    id="profile-panel-avatar"
+                    class="profile-big-avatar"
+            >
+                😀
+            </div>
+
+            <h2 id="profile-panel-name">
+                Guest
+            </h2>
+
+
+            <section id="phase6-profile" aria-label="Player progression"></section>
+            <section id="phase7-profile" class="p7-panel" aria-label="Ամենօրյա առաջադրանքներ"></section>
+
+            <button
+                    type="button"
+                    class="primary-btn full-btn"
+                    onclick="openAvatarPicker()"
+            >
+                😀 Փոխել avatar-ը
+            </button>
+
+
+            <button
+                    type="button"
+                    class="secondary-btn full-btn"
+                    onclick="showProfileHistory()"
+            >
+                📜 History
+            </button>
+
+
+            <div
+                    id="profile-history"
+                    style="display:none"
+            >
+
+                <div
+                        id="history-container"
+                        class="history-container"
+                ></div>
+
+            </div>
+
+
+            <button
+                    type="button"
+                    class="login-link-btn"
+                    onclick="goToLoginPage()"
+            >
+                🔐 Login / Switch account
+            </button>
+
+
+            <button
+                    type="button"
+                    class="logout-btn"
+                    onclick="logoutUser()"
+            >
+                🚪 Logout
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         AVATAR MODAL
+    ========================= -->
+
+    <div
+            id="avatar-modal"
+            class="avatar-modal"
+            style="display:none"
+    >
+
+        <div class="avatar-card">
+
+            <button
+                    type="button"
+                    class="modal-close"
+                    onclick="closeAvatarPicker()"
+            >
+                ×
+            </button>
+
+            <h2>Ընտրիր avatar</h2>
+
+            <div
+                    id="avatar-grid"
+                    class="avatar-grid"
+            ></div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+<script src="phase4.js"></script>
+<script src="phase5.js"></script>
+<script src="phase6.js"></script>
+<script src="phase7.js"></script>
+<script src="phase8.js"></script>
+<script src="phase9.js"></script>
+<script src="phase10.js"></script>
+<script src="phase17.js"></script>
+<script src="phase13.js"></script>
+<script src="phase15.js"></script>
+<script src="phase20.js"></script>
+
+</body>
+</html>

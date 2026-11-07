@@ -1,0 +1,11 @@
+/* Phase 9: visual style follows the existing glass-card theme. */
+.p9-panel{margin:16px 0;padding:18px;border:1px solid rgba(137,155,255,.28);border-radius:16px;background:rgba(110,115,245,.07);overflow-wrap:anywhere}
+.p9-panel h3,.p9-panel h4{margin:0 0 10px}
+.p9-note,.p9-status{font-size:.87rem;opacity:.85;line-height:1.5}
+.p9-error{color:#fa7b87;opacity:1}
+.p9-input{display:block;width:100%;min-width:0;box-sizing:border-box;padding:12px;margin:8px 0;border-radius:11px;border:1px solid rgba(140,150,180,.4);background:var(--card-bg,rgba(32,39,70,.12));color:inherit;font:inherit}
+.p9-btn{display:inline-block;max-width:100%;margin:7px 7px 7px 0;padding:12px 14px;border:0;border-radius:10px;background:#6559e8;color:#fff;font:inherit;font-weight:700;cursor:pointer;touch-action:manipulation;min-height:44px}
+.p9-muted{background:rgba(110,115,145,.28);color:inherit}
+.p9-panel ol{padding-left:25px;line-height:1.8}
+.p9-panel summary{cursor:pointer;margin:10px 0}
+@media(max-width:520px){.p9-panel{padding:13px}.p9-btn{width:100%;margin:5px 0}}

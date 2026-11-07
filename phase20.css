@@ -1,0 +1,205 @@
+/* ARM ԿԵՐՊ 1.0 — release UI layer. No existing game selector IDs changed. */
+:root { --p20-accent:#8c78ff; --p20-outline:rgba(153,153,255,.23); }
+body {font-family: Manrope, system-ui, sans-serif; letter-spacing:-.012em;}
+.bg-gradient {background: radial-gradient(circle at 12% 4%,rgba(110,85,255,.21),transparent 39%),radial-gradient(circle at 88% 18%,rgba(35,190,190,.10),transparent 36%),linear-gradient(155deg,var(--bg),var(--bg2));}
+#setup-screen {align-items:flex-start;}
+#setup-screen .setup-card {max-width:1040px; margin:14px auto 48px; padding:clamp(18px,3.4vw,36px); border:1px solid var(--p20-outline); box-shadow:0 24px 70px rgba(0,0,0,.22);}
+#setup-screen .section-title {margin-bottom:18px;}
+#setup-screen .section-title h2 {font-size:clamp(1.45rem,2.6vw,2rem);letter-spacing:-.035em;}
+#setup-screen .section-title p {font-size:.88rem;line-height:1.5;}
+.p20-intro {border-radius:22px;padding:22px clamp(17px,3vw,28px);background:linear-gradient(120deg,rgba(113,91,240,.19),rgba(29,185,170,.08));border:1px solid rgba(137,128,255,.23);margin-bottom:22px;}
+.p20-version {display:inline-block;font-size:.72rem;letter-spacing:.14em;font-weight:800;color:#c8bdff;background:rgba(116,98,232,.23);border-radius:100px;padding:6px 11px;margin-bottom:9px;}
+.p20-intro h3 {font-size:clamp(1.28rem,2.8vw,1.8rem);margin:0 0 6px;letter-spacing:-.04em;}
+.p20-intro p,.p20-panel-heading p {color:var(--muted);line-height:1.65;margin:0;max-width:65ch;font-size:.92rem;}
+.p20-tabs {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;background:var(--card2);border:1px solid var(--border);padding:7px;border-radius:18px;margin:0 0 18px;}
+.p20-tab {cursor:pointer;white-space:nowrap;min-height:50px;border-radius:12px;background:transparent;color:var(--muted);font-weight:800;font-size:.91rem;transition:background .18s,color .18s,box-shadow .18s;}
+.p20-tab:hover {background:rgba(140,120,255,.12);color:var(--text);}
+.p20-tab.is-active {background:linear-gradient(128deg,#7666eb,#6759c7);box-shadow:0 6px 21px rgba(100,80,220,.25);color:white;}
+.p20-tab:focus-visible,.p20-inline-link:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible {outline:3px solid #ac9cff;outline-offset:3px;}
+.p20-panel[hidden] {display:none!important;}
+.p20-panel {min-width:0;animation:p20-enter .18s ease-out;}
+.p20-panel-heading {margin:0 0 19px;padding:19px 20px;border-radius:16px;background:var(--card2);border:1px solid var(--border);}
+.p20-panel-heading h3 {margin:0 0 8px;font-size:1.15rem;letter-spacing:-.02em;}
+.p20-inline-link {cursor:pointer;border:1px solid var(--border);padding:9px 13px;margin-top:14px;border-radius:11px;background:rgba(139,92,246,.13);color:var(--text);font-weight:700;}
+#p20-local .setup-section {border:1px solid var(--border);background:var(--card2);border-radius:17px;padding:18px 19px;margin-bottom:16px;}
+#p20-local .section-heading {font-size:1rem;margin-bottom:14px;}
+#p20-local .settings-grid {gap:14px;}
+#p20-local .start-btn {width:100%;min-height:57px;font-size:1.1rem;border-radius:15px;box-shadow:0 8px 25px rgba(100,80,230,.23);}
+#p20-local .team-input-row {grid-template-columns:34px 52px minmax(0,1fr) 40px;}
+#p20-online .p9-panel,#p20-online .p10-panel,#p20-friends .p17-panel,#p20-rewards .p7-panel,#p20-rewards .p8-panel {border:1px solid var(--border);background:var(--card2);border-radius:18px;padding:clamp(13px,2vw,22px);margin:0 0 17px;max-width:100%;}
+#p20-online .p9-panel button,#p20-online .p10-panel button,#p20-friends .p17-panel button,#p20-rewards .p7-panel button {min-height:38px;}
+#p20-online input,#p20-online select,#p20-friends input {max-width:100%;}
+#p20-online .p10-panel,#p20-friends .p17-panel {overflow-wrap:anywhere;}
+#p20-online .p11-member,#p20-online .p17-card {border-radius:13px;}
+:root[data-theme="light"] .p20-version {color:#5645b4;background:#eae6ff;}
+:root[data-theme="light"] .p20-intro {background:linear-gradient(130deg,#f0ebff,#e6f8f7);}
+@keyframes p20-enter {from {opacity:.55;transform:translateY(5px)}to {opacity:1;transform:translateY(0)}}
+@media (max-width:640px) {
+  #setup-screen .setup-card {padding:14px;margin:0 auto 30px;border-radius:20px;}
+  .p20-intro {padding:18px 15px;margin-bottom:14px;}
+  .p20-tabs {gap:3px;padding:5px;border-radius:14px;}
+  .p20-tab {font-size:.75rem;min-height:48px;padding:8px 3px;white-space:normal;}
+  .p20-tab span {display:block;font-size:1.2rem;margin-bottom:2px;}
+  .p20-panel-heading {padding:16px 14px;}
+  #p20-local .setup-section {padding:15px 12px;}
+  #p20-local .team-input-row {grid-template-columns:28px 46px minmax(0,1fr) 36px;gap:5px;}
+  #p20-local .team-number {width:28px;}
+  #p20-local .settings-grid {grid-template-columns:repeat(2,minmax(0,1fr));}
+  .topbar {gap:8px;}
+}
+@media (prefers-reduced-motion:reduce) {.p20-panel,.p20-tab {animation:none!important;transition:none!important;}}
+
+
+/* Phase 20.1 — systematic responsive layout/contrast fixes.
+   Loaded LAST, after every legacy phase stylesheet. */
+:root {
+  --p20-surface:rgba(255,255,255,.045);
+  --p20-control:rgba(255,255,255,.075);
+  --p20-line:rgba(166,176,235,.20);
+}
+:root[data-theme="light"] {
+  --p20-surface:rgba(31,44,91,.035);
+  --p20-control:#fff;
+  --p20-line:rgba(41,54,104,.16);
+}
+html, body { min-width:0; max-width:100%; }
+body { line-height:1.5; }
+#app-container, main, .screen, .setup-card, .p20-panel,
+#phase9-setup, #phase10-setup, #phase17-setup {min-width:0;max-width:100%;}
+#setup-screen .setup-card {width:min(100%,1040px);}
+/* Keep the fixed background behind content on all browsers. */
+.bg-gradient {z-index:-1;pointer-events:none;}
+/* Don't allow browser defaults to override the tab's intended styling. */
+.p20-tab {border:1px solid transparent;padding:10px 8px;line-height:1.3;display:flex;align-items:center;justify-content:center;gap:7px;min-width:0;}
+.p20-tab span {flex-shrink:0;}
+.p20-panel {width:100%;}
+.p20-panel h3,.p20-panel h4 {overflow-wrap:anywhere;}
+.p20-panel-heading {max-width:100%;}
+.p20-panel-heading p {max-width:72ch;}
+/* Topbar scales without pushing profile or theme controls off screen. */
+.topbar {max-width:100%;min-width:0;}
+.brand {flex:1 1 auto;}
+.brand > div {min-width:0;}
+.top-actions {min-width:0;flex:0 1 auto;}
+.top-actions button {max-width:100%;}
+/* Consistent card surfaces across all previous phase modules. */
+#p20-online :is(.p9-panel,.p10-panel),
+#p20-friends .p17-panel,
+#p20-rewards :is(.p7-panel,.p8-panel) {
+  margin:0 0 18px;
+  padding:clamp(14px,2.1vw,22px);
+  background:var(--p20-surface);
+  border:1px solid var(--p20-line);
+  box-shadow:none;
+  border-radius:17px;
+  width:100%;min-width:0;
+}
+.p20-panel :is(.p11-lobby,.p11-chat,.p13-panel,.p12-team-picker,.p12-results,.p12-scores,.p16-create-options,.p16-host-controls,.p16-join-options,.p17-card) {
+  max-width:100%;min-width:0;overflow-wrap:anywhere;
+  border-color:var(--p20-line);
+}
+/* Undo the overly broad legacy label rule that stacks checkbox labels incorrectly. */
+#p20-online label:has(input[type="checkbox"]),
+#p20-online .p16-create-options label,
+#p20-online .p16-host-controls label {
+  flex-direction:row;flex-wrap:wrap;align-items:center;
+  gap:8px;line-height:1.5;
+}
+#p20-online input[type="checkbox"] {width:18px;height:18px;flex:0 0 18px;accent-color:var(--primary);}
+/* Controls: readable text, safe native selects and no horizontal overflow. */
+.p20-panel :is(input:not([type="checkbox"]):not([type="range"]),select,textarea) {
+  max-width:100%;min-width:0;
+  color:var(--text);
+  border:1px solid var(--p20-line);
+  background:var(--p20-control);
+  border-radius:11px;
+  font-size:clamp(14px,1.4vw,16px);
+}
+.p20-panel select option, #setup-screen select option {background:var(--bg2);color:var(--text);}
+:root[data-theme="light"] .p20-panel select option,
+:root[data-theme="light"] #setup-screen select option {background:#fff;color:#172033;}
+.p20-panel :is(input,textarea)::placeholder {color:var(--muted);opacity:.9;}
+.p20-panel :is(button,.p9-btn,.p10-btn,.p17-btn,.p8-btn,.p7-claim) {max-width:100%;overflow-wrap:anywhere;line-height:1.4;}
+.p20-panel button:not(:disabled) {cursor:pointer;}
+.p20-panel button:disabled {opacity:.58;cursor:not-allowed;}
+#p20-online .p9-btn, #p20-online .p10-btn,
+#p20-friends .p17-btn, #p20-rewards .p8-btn {min-height:43px;}
+#p20-online .p11-settings {display:flex;gap:10px;flex-wrap:wrap;}
+#p20-online .p11-settings select {width:auto;flex:1 1 140px;}
+#p20-online .p11-chat-form {min-width:0;}
+#p20-online .p11-chat-form input {flex:1 1 190px;}
+#p20-online .p11-members, #p20-online .p11-member {min-width:0;}
+#p20-online .p11-member > span {min-width:0;flex:1 1 170px;overflow-wrap:anywhere;}
+#p20-online .p14-grid {grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));}
+#p20-online .p14-participant {min-width:0;}
+#p20-online .p14-volume-label {flex-direction:row;align-items:center;gap:9px;min-width:0;}
+#p20-online .p14-volume-label input {width:100%;flex:1 1 auto;min-width:60px;}
+#p20-online .p13-panel audio {max-width:100%;}
+#p20-online :is(.p10-actions,.p13-actions,.p17-row) {min-width:0;}
+#p20-friends .p17-row > * {max-width:100%;}
+#p20-friends .p17-input {flex:1 1 200px;width:auto;}
+#p20-rewards .p7-item {min-width:0;}
+#p20-rewards .p7-info {overflow-wrap:anywhere;}
+#p20-rewards .p7-claim {flex-shrink:0;}
+#p20-local .team-input-row {min-width:0;grid-template-columns:34px 52px minmax(0,1fr) 40px;gap:9px;}
+#p20-local .team-input-row > * {min-width:0;}
+#p20-local .team-input-row .team-name-input {width:100%;}
+#p20-local .team-input-row .remove-team-btn {justify-self:end;}
+#p20-local .settings-grid > label {min-width:0;}
+#p20-local .setup-section > label {min-width:0;}
+#p20-local #category-select {width:100%;}
+/* Make the non-setup screens visually consistent too. */
+#ready-screen :is(.ready-card,.glass-card),
+#game-screen :is(.game-card,.glass-card),
+#result-screen :is(.result-card,.glass-card),
+#winner-screen :is(.winner-card,.glass-card) {max-width:min(100%,760px);min-width:0;}
+#game-screen .word-card {max-width:100%;}
+#game-screen .word-card-text {overflow-wrap:anywhere;}
+#profile-panel .profile-card,#avatar-modal .avatar-card {max-width:calc(100vw - 24px);min-width:0;}
+/* Practical breakpoints, including narrow devices. */
+@media(max-width:760px) {
+  #setup-screen .setup-card {margin:0 auto 24px;padding:clamp(14px,3vw,22px);}
+  .p20-tabs {gap:5px;padding:5px;}
+  .p20-tab {font-size:.84rem;gap:5px;padding:9px 4px;}
+  .p20-tab span {font-size:1.05rem;}
+  #p20-local .setup-section {padding:16px 14px;}
+  #p20-online .p11-settings button {flex:1 1 140px;}
+}
+@media(max-width:520px) {
+  #setup-screen {padding-left:10px;padding-right:10px;}
+  #setup-screen .setup-card {border-radius:17px;padding:12px;}
+  #setup-screen .section-title {margin:4px 3px 14px;}
+  .p20-intro {border-radius:15px;padding:16px 14px;}
+  .p20-intro h3 {font-size:1.23rem;}
+  .p20-tabs {grid-template-columns:repeat(4,minmax(0,1fr));gap:3px;}
+  .p20-tab {display:flex;flex-direction:column;font-size:clamp(.66rem,2.7vw,.8rem);white-space:normal;word-break:normal;gap:3px;line-height:1.25;min-height:62px;}
+  .p20-tab span {font-size:1.32rem;margin:0;}
+  .p20-panel-heading {padding:14px 12px;margin-bottom:12px;}
+  #p20-local .setup-section {padding:14px 11px;margin-bottom:12px;}
+  #p20-local .team-input-row {grid-template-columns:27px 44px minmax(0,1fr) 33px;gap:5px;}
+  #p20-local .team-input-row .team-number {width:27px;height:32px;}
+  #p20-local .team-avatar-input {width:44px;height:43px;padding:0 1px;font-size:20px;}
+  #p20-local .team-input-row .remove-team-btn {width:33px;height:39px;}
+  #p20-local .team-name-input {height:43px;padding-inline:8px;font-size:16px;}
+  #p20-local .settings-grid {grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;}
+  #p20-online :is(.p9-panel,.p10-panel),#p20-friends .p17-panel,#p20-rewards :is(.p7-panel,.p8-panel) {padding:12px;margin-bottom:12px;}
+  #p20-online .p11-member {align-items:stretch;}
+  #p20-online .p11-member button {width:100%;}
+  #p20-online .p11-chat-form {flex-direction:column;}
+  #p20-online .p11-chat-form :is(input,button) {width:100%;flex-basis:auto;}
+  #p20-friends .p17-input {width:100%;flex-basis:100%;}
+  #p20-friends .p17-row button {flex:1 1 auto;}
+  #p20-rewards .p7-item {flex-wrap:wrap;}
+  #p20-rewards .p7-claim {margin-left:auto;}
+  .topbar {flex-wrap:wrap;gap:8px;}
+  .top-actions {margin-left:auto;}
+}
+@media(max-width:350px) {
+  #p20-local .settings-grid {grid-template-columns:1fr;}
+  #p20-local .team-input-row {grid-template-columns:24px 40px minmax(0,1fr) 30px;gap:4px;}
+  #p20-local .team-avatar-input {width:40px;}
+  #p20-local .team-input-row .remove-team-btn {width:30px;}
+}
+@media(prefers-reduced-motion:reduce) {
+  .p20-panel,.p20-tab {animation:none!important;transition:none!important;}
+}

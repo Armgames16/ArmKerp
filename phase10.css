@@ -1,0 +1,14 @@
+/* Phase 10 — responsive live panel */
+.p10-panel{margin:18px 0;padding:18px;border:1px solid rgba(112,184,253,.34);border-radius:16px;background:rgba(70,135,245,.07);overflow-wrap:anywhere}
+.p10-panel h3,.p10-panel h4{margin:0 0 12px}.p10-help{font-size:.9rem;opacity:.86;line-height:1.55}
+.p10-actions{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
+.p10-btn{background:#3769d7;border:0;border-radius:11px;padding:11px 16px;color:white;font:inherit;font-weight:700;min-height:44px;cursor:pointer;touch-action:manipulation}
+.p10-btn:focus-visible,.p10-guess-form input:focus-visible{outline:3px solid #e5a92f;outline-offset:2px}
+.p10-live{padding:14px;border-radius:12px;background:rgba(122,137,182,.1)}
+.p10-heading{font-weight:700}.p10-clock{font-size:1.6rem;font-variant-numeric:tabular-nums;font-weight:800;min-height:30px;margin:8px 0}
+.p10-word{font-size:clamp(1.5rem,5vw,2.3rem);font-weight:850;text-align:center;letter-spacing:.03em;padding:18px;overflow-wrap:anywhere}
+.p10-guess-form{display:flex;gap:8px;flex-wrap:wrap}
+.p10-guess-form input{min-width:0;flex:1 1 160px;border-radius:10px;border:1px solid rgba(140,150,180,.6);padding:12px;font:inherit;color:inherit;background:var(--card-bg,rgba(32,39,70,.15))}
+.p10-correct{font-weight:700;color:#40b689}.p10-error{color:#e65367}.p10-panel ol{padding-left:24px;line-height:1.8}
+@media(max-width:520px){.p10-panel{padding:12px}.p10-btn{width:100%}.p10-guess-form .p10-btn{width:auto;flex:1}}
+@media(prefers-reduced-motion:reduce){.p10-panel *{animation:none!important;transition:none!important}}

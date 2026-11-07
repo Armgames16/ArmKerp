@@ -1,0 +1,10 @@
+/* Phase 8 social score challenges */
+.p8-panel{margin:18px 0;padding:18px;border:1px solid rgba(138,112,255,.27);border-radius:18px;background:rgba(120,94,255,.07);color:inherit;min-width:0}
+.p8-title{margin:0 0 8px;font-size:1.12rem}.p8-subhead{margin:10px 0 6px;font-size:1rem}
+.p8-note,.p8-disclaimer{font-size:.9rem;opacity:.85;overflow-wrap:anywhere}.p8-disclaimer{margin-bottom:0}
+.p8-input,.p8-code{display:block;box-sizing:border-box;width:100%;min-height:68px;max-width:100%;padding:10px;margin:12px 0;border:1px solid rgba(150,150,170,.5);border-radius:10px;background:var(--card-bg,rgba(30,30,55,.18));color:inherit;font:inherit;resize:vertical;overflow-wrap:anywhere}
+.p8-btn{display:inline-block;max-width:100%;padding:12px 16px;margin:4px 8px 4px 0;border:0;border-radius:12px;font:inherit;font-weight:700;cursor:pointer;background:#7650dc;color:white;touch-action:manipulation}
+.p8-btn:focus-visible,.p8-input:focus-visible{outline:3px solid #a694ff;outline-offset:2px}.p8-secondary{background:#3c3b59;color:#fff}
+.p8-status{min-height:1.2em;font-size:.9rem}.p8-error{color:#df5757}.p8-comparison{overflow-wrap:anywhere}.p8-teams{padding-left:25px;line-height:1.7}.p8-verdict{display:block;margin:10px 0}
+@media(max-width:560px){.p8-panel{padding:13px}.p8-btn{width:100%;margin:6px 0;min-height:48px}}
+@media(prefers-reduced-motion:reduce){.p8-panel *{transition:none!important;animation:none!important}}

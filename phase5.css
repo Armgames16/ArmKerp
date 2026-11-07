@@ -1,0 +1,12 @@
+/* Phase 5: compact, responsive end-of-game insights */
+#phase5-summary{margin:22px 0;text-align:left;max-width:100%;}
+.p5-heading{font-size:1.08rem;font-weight:800;margin:20px 0 12px;line-height:1.4;}
+.p5-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;}
+.p5-stat{border:1px solid rgba(150,160,200,.22);border-radius:14px;padding:14px 12px;background:rgba(140,140,180,.08);display:flex;flex-direction:column;gap:6px;min-width:0;}
+.p5-stat-label{font-size:.78rem;opacity:.82;line-height:1.4;}.p5-stat-value{font-size:1.35rem;font-variant-numeric:tabular-nums;}
+.p5-board{list-style:none;margin:0;padding:0;display:grid;gap:8px;}
+.p5-rank{display:flex;align-items:center;gap:10px;padding:12px;border:1px solid rgba(150,160,200,.22);border-radius:12px;background:rgba(140,140,180,.07);min-width:0;}
+.p5-leading{border-color:rgba(255,195,80,.55);background:rgba(255,195,80,.08);}
+.p5-medal{flex:none;min-width:28px}.p5-team{flex:1;overflow-wrap:anywhere;min-width:0}.p5-points{flex:none;font-variant-numeric:tabular-nums;font-size:.9rem;}
+.p5-badges{display:flex;flex-wrap:wrap;gap:8px}.p5-badge{border:1px solid rgba(150,160,200,.28);background:rgba(140,140,180,.12);border-radius:999px;padding:8px 12px;font-size:.84rem;}
+@media(max-width:370px){.p5-stats{grid-template-columns:1fr}.p5-rank{flex-wrap:wrap}.p5-points{margin-left:auto}}

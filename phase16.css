@@ -1,0 +1,7 @@
+/* Phase 16 secure room controls */
+.p16-create-options,.p16-host-controls,.p16-join-options{border:1px solid rgba(140,140,160,.35);border-radius:14px;padding:12px;margin:12px 0;display:grid;gap:10px}
+.p16-create-options label,.p16-host-controls label{display:flex;align-items:center;gap:7px}
+.p16-host-controls input:not([type=checkbox]),.p16-create-options input:not([type=checkbox]),.p16-join-options input{width:100%;min-width:0;box-sizing:border-box}
+.p16-member{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:7px;border-bottom:1px solid rgba(140,140,160,.2)}
+.p16-ban-list{margin-top:8px}
+@media(max-width:520px){.p16-member{flex-wrap:wrap}}

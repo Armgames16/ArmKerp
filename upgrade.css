@@ -1,0 +1,91 @@
+/* Arm Կերպ — Hybrid Premium refresh (Phase 1) */
+:root {
+  --primary: #7770ff;
+  --primary2: #a06bff;
+  --success: #35dfad;
+  --radius: 24px;
+  --border: rgba(173, 185, 255, .16);
+  --shadow: 0 24px 70px rgba(0, 0, 0, .34);
+}
+:root[data-theme="light"] {
+  --primary: #6559e8;
+  --primary2: #8b5cf6;
+  --border: rgba(73, 76, 130, .14);
+  --shadow: 0 22px 55px rgba(52, 59, 100, .13);
+}
+html { scroll-behavior: smooth; }
+body {
+  background-image: radial-gradient(ellipse at 50% -15%, rgba(119,112,255,.10), transparent 55%);
+  letter-spacing: .01em;
+}
+.bg-gradient {
+  background:
+    radial-gradient(circle at 8% 12%, rgba(108,99,255,.24), transparent 34%),
+    radial-gradient(circle at 94% 18%, rgba(53,223,173,.10), transparent 30%),
+    radial-gradient(circle at 52% 100%, rgba(160,107,255,.12), transparent 38%);
+}
+.auth-card, .glass-card, .profile-card, .result-card, .winner-card, .game-card {
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+}
+.auth-card {
+  border-radius: 30px;
+  background: linear-gradient(145deg, rgba(24,36,61,.96), rgba(12,22,39,.94));
+}
+:root[data-theme="light"] .auth-card {
+  background: linear-gradient(145deg, rgba(255,255,255,.98), rgba(241,244,255,.96));
+}
+.auth-logo, .brand-icon {
+  box-shadow: 0 10px 35px rgba(119,112,255,.25);
+}
+.primary-btn, .secondary-btn, .guest-btn, .add-word-btn, .icon-btn, .profile-btn,
+.remove-team-btn, .avatar-option, .login-link-btn, .logout-btn {
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease, filter .18s ease;
+}
+.primary-btn {
+  background: linear-gradient(120deg, var(--primary), var(--primary2));
+  box-shadow: 0 9px 24px rgba(119,112,255,.24);
+}
+.primary-btn:hover, .secondary-btn:hover, .guest-btn:hover, .add-word-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.06);
+}
+.primary-btn:active, .secondary-btn:active, .guest-btn:active, .icon-btn:active { transform: translateY(0) scale(.985); }
+button:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 3px solid rgba(119,112,255,.65);
+  outline-offset: 3px;
+}
+input, select {
+  transition: border-color .18s ease, box-shadow .18s ease, background .18s ease;
+}
+input:focus, select:focus {
+  border-color: rgba(119,112,255,.8) !important;
+  box-shadow: 0 0 0 4px rgba(119,112,255,.12);
+}
+.topbar {
+  border: 1px solid var(--border);
+  box-shadow: 0 12px 38px rgba(0,0,0,.12);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+.setup-section + .setup-section { border-top-color: var(--border); }
+.team-input-row, .score-row, .history-item, .word-card, .achievement-chip {
+  border-color: var(--border);
+  transition: border-color .18s ease, transform .18s ease, background .18s ease;
+}
+.team-input-row:focus-within { border-color: rgba(119,112,255,.65); }
+.word-card:hover, .history-item:hover { transform: translateY(-1px); }
+.screen.active { animation: screen-enter .28s ease both; }
+@keyframes screen-enter {
+  from { opacity: 0; transform: translateY(7px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+}
+@media (max-width: 600px) {
+  .auth-card, .setup-card, .ready-card, .result-card, .winner-card { border-radius: 22px; }
+  button { touch-action: manipulation; }
+}

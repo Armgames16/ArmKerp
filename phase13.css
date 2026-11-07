@@ -1,0 +1,21 @@
+/* Phase 13 — Voice Chat */
+.p13-panel{border:1px solid var(--border,rgba(148,163,184,.35));border-radius:16px;padding:16px;margin-top:16px;background:rgba(99,102,241,.055)}
+.p13-panel h4{margin:0 0 8px}
+.p13-actions{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
+.p13-actions button{min-height:44px}
+.p13-actions button[hidden]{display:none}
+.p13-panel audio{width:100%;max-width:380px;margin:6px 0}
+@media(max-width:500px){.p13-actions{flex-direction:column}.p13-actions button{width:100%}}
+
+/* Phase 14 — client-side volume & voice activity */
+.p14-title{font-size:1rem;margin:16px 0 8px}
+.p14-grid{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(100%,285px),1fr));margin:10px 0}
+.p14-participant{display:flex;flex-wrap:wrap;align-items:center;gap:10px;border:1px solid var(--border,rgba(148,163,184,.35));border-radius:14px;padding:12px;background:rgba(100,116,139,.055);transition:border-color .15s,box-shadow .15s}
+.p14-participant.p14-speaking{border-color:#22c55e;box-shadow:0 0 0 2px rgba(34,197,94,.14)}
+.p14-avatar{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:rgba(99,102,241,.14);font-size:22px;flex-shrink:0}
+.p14-details{display:flex;flex-direction:column;gap:2px;flex:1;min-width:95px;overflow-wrap:anywhere}
+.p14-speaking-label{font-size:.8rem;opacity:.78}
+.p14-volume-label{display:flex;align-items:center;gap:7px;flex:1 1 100%;font-size:.86rem}
+.p14-volume-label input{flex:1;min-width:70px;accent-color:#6366f1;cursor:pointer}
+.p14-volume-label output{min-width:36px;text-align:right;font-variant-numeric:tabular-nums}
+@media(prefers-reduced-motion:reduce){.p14-participant{transition:none}}

@@ -1,0 +1,21 @@
+/* Phase 4: celebrations and accessible motion */
+#game-timer { transition: color .2s, transform .2s, text-shadow .2s; font-variant-numeric: tabular-nums; }
+#game-timer.p4-tick { animation: p4Tick .26s ease-out; }
+#game-timer.timer-danger { text-shadow: 0 0 18px rgba(255,65,94,.5); }
+#game-timer.p4-urgent { animation: p4Urgent .8s ease-in-out infinite; }
+#combo-box.p4-combo-pop { animation: p4ComboPop .42s cubic-bezier(.2,1.6,.4,1); }
+.word-card.guessed { transition: transform .18s, background-color .18s; }
+#winner-screen.active .winner-trophy { animation: p4Trophy 1s cubic-bezier(.2,1.4,.3,1) both; }
+#winner-screen.active .winner-card { animation: p4Entrance .5s ease-out both; }
+#winner-screen.p4-draw .winner-trophy { filter: grayscale(.2); }
+.p4-celebration-layer { position:fixed; inset:0; z-index:9999; pointer-events:none; overflow:hidden; }
+.p4-confetti { position:absolute; top:-30px; width:9px; height:16px; border-radius:2px; opacity:.95; animation:p4Fall var(--duration,3s) linear forwards; animation-delay:var(--delay,0s); }
+.p4-toast { position:fixed; top:20%; left:50%; transform:translateX(-50%); z-index:9998; pointer-events:none; padding:12px 22px; border:1px solid rgba(255,255,255,.28); border-radius:999px; background:rgba(20,20,40,.9); color:white; font-weight:800; box-shadow:0 12px 35px rgba(0,0,0,.3); animation:p4Toast 1.3s ease-out forwards; text-align:center; }
+@keyframes p4Tick { 50% {transform:scale(1.16)} }
+@keyframes p4Urgent { 50% {transform:scale(1.09);filter:brightness(1.25)} }
+@keyframes p4ComboPop { 50% {transform:scale(1.16)} }
+@keyframes p4Trophy { from {transform:translateY(-25px) scale(.5) rotate(-18deg);opacity:0} to {transform:none;opacity:1} }
+@keyframes p4Entrance { from {opacity:0;transform:translateY(24px)} to {opacity:1;transform:none} }
+@keyframes p4Fall { to {transform:translate3d(var(--drift,0px),110vh,0) rotate(var(--spin,700deg));opacity:0} }
+@keyframes p4Toast { 0% {opacity:0;transform:translate(-50%,20px) scale(.85)} 20%,70% {opacity:1;transform:translate(-50%,0) scale(1)} 100% {opacity:0;transform:translate(-50%,-22px) scale(.95)} }
+@media (prefers-reduced-motion:reduce) { #game-timer.p4-tick,#game-timer.p4-urgent,#combo-box.p4-combo-pop,#winner-screen.active .winner-trophy,#winner-screen.active .winner-card,.p4-confetti,.p4-toast {animation:none!important} .p4-celebration-layer {display:none} }

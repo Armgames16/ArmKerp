@@ -1,0 +1,15 @@
+
+/* Phase 11 — Multiplayer lobby */
+.p11-lobby,.p11-chat{margin-top:16px;padding:14px;border:1px solid var(--border-color,rgba(130,130,155,.28));border-radius:14px;background:rgba(127,127,150,.055)}
+.p11-lobby h4,.p11-chat h4{margin:0 0 12px}
+.p11-members{display:grid;gap:8px;margin:10px 0}
+.p11-member{display:flex;flex-wrap:wrap;align-items:center;gap:10px;justify-content:space-between;padding:10px;border-radius:10px;background:rgba(127,127,150,.09)}
+.p11-member strong{font-size:.85rem}
+.p11-member button{font-size:.82rem}
+.p11-settings{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:14px}
+.p11-settings select,.p11-chat input{background:var(--card-bg,#262838);color:inherit;border:1px solid #8888;border-radius:9px;padding:10px;min-width:0}
+.p11-chat input{flex:1;min-width:120px}
+.p11-messages{max-height:190px;overflow:auto;display:grid;gap:6px;padding:8px 0;overflow-wrap:anywhere}
+.p11-messages p{margin:0;padding:7px 9px;background:rgba(127,127,150,.09);border-radius:8px}
+.p11-chat-form{display:flex;gap:8px;margin-top:10px}
+@media(max-width:520px){.p11-chat-form{flex-wrap:wrap}.p11-chat-form button{width:100%}}
