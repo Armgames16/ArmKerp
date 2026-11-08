@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 const db = require("./database");
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Phase 18: small production-friendly safeguards, without changing game APIs.
 app.disable('x-powered-by');
